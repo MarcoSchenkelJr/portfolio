@@ -1,0 +1,1829 @@
+{
+  "version": 1,
+  "generatedAt": "2026-11-13T23:36:03.045Z",
+  "pathsRelativeTo": "public/ (sem barra inicial; o site prefixa com a base, ex.: /portfolio/)",
+  "conventions": {
+    "image": "<src>-<largura>.{avif,webp}; \"widths\" lista as larguras geradas; width/height = proporção para reservar espaço",
+    "video": "<src>.mp4 (H.264) + <src>.webm (VP9), sem áudio; pôster em <poster>-<posterWidth>.{avif,webp}"
+  },
+  "notes": [
+    "Todas as telas do WMS usam só dados fictícios (seed.mjs) e o usuário \"Usuário Demo\". O estado \"Supabase online\" vem de um backend simulado no navegador (interceptação de /api/* pelo DevTools), sem servidor real.",
+    "og/ e site/ ficam em public/media/ porque esta etapa só podia escrever ali. O DESIGN.md prevê public/og/*.png, public/favicon.svg e public/apple-touch-icon.png: copie ou aponte para estes arquivos.",
+    "PDI: \"bordas\" é o filtro Passa Alta (Sobel) do próprio sistema, não Canny. O afinamento usa o método Steinfeld, porque o Zhang-Suen do servidor devolve a imagem sem afinar.",
+    "Os pares ba-cinza-antes, ba-bordas-antes e ba-limiar-antes são a mesma imagem original (arquivos idênticos)."
+  ],
+  "totalKB": 9810,
+  "items": [
+    {
+      "id": "W-01",
+      "slug": "wms-pro",
+      "name": "painel",
+      "kind": "image",
+      "src": "media/wms-pro/painel",
+      "width": 1280,
+      "height": 800,
+      "widths": [
+        960,
+        1600
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/wms-pro/painel-960.webp",
+      "alt": "Painel \"Visão geral do armazém\" do WMS Pro com dados fictícios: 4 pallets aguardando endereçamento, 7 armazenados, 744 unidades e 6.080 kg em estoque, medidor de ocupação em 6% e gráfico de recebimentos dos últimos 7 dias. No topo, o indicador \"Supabase online\" e o usuário \"Usuário Demo\".",
+      "variants": [
+        {
+          "src": "media/wms-pro/painel-1600.avif",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/avif",
+          "kB": 39
+        },
+        {
+          "src": "media/wms-pro/painel-1600.webp",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/webp",
+          "kB": 58.7
+        },
+        {
+          "src": "media/wms-pro/painel-960.avif",
+          "width": 960,
+          "height": 600,
+          "type": "image/avif",
+          "kB": 21.2
+        },
+        {
+          "src": "media/wms-pro/painel-960.webp",
+          "width": 960,
+          "height": 600,
+          "type": "image/webp",
+          "kB": 28.6
+        }
+      ]
+    },
+    {
+      "id": "W-02",
+      "slug": "wms-pro",
+      "name": "painel-clip",
+      "kind": "video",
+      "src": "media/wms-pro/painel-clip",
+      "width": 1280,
+      "height": 800,
+      "displayWidth": 1280,
+      "displayHeight": 800,
+      "durationSec": 8.1,
+      "loop": true,
+      "muted": true,
+      "sources": [
+        {
+          "src": "media/wms-pro/painel-clip.mp4",
+          "type": "video/mp4; codecs=\"avc1.640028\"",
+          "kB": 361.4
+        },
+        {
+          "src": "media/wms-pro/painel-clip.webm",
+          "type": "video/webm; codecs=\"vp9\"",
+          "kB": 298.2
+        }
+      ],
+      "poster": "media/wms-pro/painel-clip-poster",
+      "posterWidth": 1280,
+      "posterFiles": [
+        "media/wms-pro/painel-clip-poster-1280.avif",
+        "media/wms-pro/painel-clip-poster-1280.webp"
+      ],
+      "posterFallback": "media/wms-pro/painel-clip-poster-1280.webp",
+      "alt": "Clipe do painel do WMS Pro: o menu lateral desliza de Recebimento para Visão geral, os contadores sobem até 4, 7, 744 e 6.080, o cursor passa pelos indicadores e alterna o filtro de movimentações entre Em triagem, Armazenados e Todos."
+    },
+    {
+      "id": "W-03",
+      "slug": "wms-pro",
+      "name": "entrada",
+      "kind": "image",
+      "src": "media/wms-pro/entrada",
+      "width": 1280,
+      "height": 800,
+      "widths": [
+        960,
+        1600
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/wms-pro/entrada-960.webp",
+      "alt": "Tela de Recebimento do WMS Pro preenchida após a leitura de uma etiqueta fictícia: material MAT-10021 identificado e cadastrado, lote L2611, descrição \"Adesivo Base Água 25 KG\", unidade Balde, 25 kg por unidade, depósito EX01 e 40 unidades conferidas, com peso total estimado de 1.000 kg.",
+      "variants": [
+        {
+          "src": "media/wms-pro/entrada-1600.avif",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/avif",
+          "kB": 42.6
+        },
+        {
+          "src": "media/wms-pro/entrada-1600.webp",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/webp",
+          "kB": 65.3
+        },
+        {
+          "src": "media/wms-pro/entrada-960.avif",
+          "width": 960,
+          "height": 600,
+          "type": "image/avif",
+          "kB": 22.9
+        },
+        {
+          "src": "media/wms-pro/entrada-960.webp",
+          "width": 960,
+          "height": 600,
+          "type": "image/webp",
+          "kB": 31.2
+        }
+      ]
+    },
+    {
+      "id": "W-04",
+      "slug": "wms-pro",
+      "name": "entrada-clip",
+      "kind": "video",
+      "src": "media/wms-pro/entrada-clip",
+      "width": 1280,
+      "height": 800,
+      "displayWidth": 1280,
+      "displayHeight": 800,
+      "durationSec": 9.3,
+      "loop": true,
+      "muted": true,
+      "sources": [
+        {
+          "src": "media/wms-pro/entrada-clip.mp4",
+          "type": "video/mp4; codecs=\"avc1.640028\"",
+          "kB": 249.3
+        },
+        {
+          "src": "media/wms-pro/entrada-clip.webm",
+          "type": "video/webm; codecs=\"vp9\"",
+          "kB": 362.5
+        }
+      ],
+      "poster": "media/wms-pro/entrada-clip-poster",
+      "posterWidth": 1280,
+      "posterFiles": [
+        "media/wms-pro/entrada-clip-poster-1280.avif",
+        "media/wms-pro/entrada-clip-poster-1280.webp"
+      ],
+      "posterFallback": "media/wms-pro/entrada-clip-poster-1280.webp",
+      "alt": "Clipe do Recebimento: o código MAT-10021-L2611 é digitado no campo de leitura e confirmado com Enter, código, lote, descrição e peso se preenchem sozinhos, o operador digita 40 na quantidade e registra o pallet, que entra na área de triagem com aviso de sucesso."
+    },
+    {
+      "id": "W-05",
+      "slug": "wms-pro",
+      "name": "enderecamento",
+      "kind": "image",
+      "src": "media/wms-pro/enderecamento",
+      "width": 1280,
+      "height": 800,
+      "widths": [
+        960,
+        1600
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/wms-pro/enderecamento-960.webp",
+      "alt": "Tela de Endereçamento do WMS Pro com o pallet fictício \"Selante Cartucho 280 ML\" (MAT-40099, lote L2618, 240 unidades) selecionado na lista de triagem e o endereço 03.01.03.02 digitado, decomposto em Corredor 03, Estante 01, Andar 03 e Box 02.",
+      "variants": [
+        {
+          "src": "media/wms-pro/enderecamento-1600.avif",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/avif",
+          "kB": 50.4
+        },
+        {
+          "src": "media/wms-pro/enderecamento-1600.webp",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/webp",
+          "kB": 76.6
+        },
+        {
+          "src": "media/wms-pro/enderecamento-960.avif",
+          "width": 960,
+          "height": 600,
+          "type": "image/avif",
+          "kB": 26.8
+        },
+        {
+          "src": "media/wms-pro/enderecamento-960.webp",
+          "width": 960,
+          "height": 600,
+          "type": "image/webp",
+          "kB": 37.1
+        }
+      ]
+    },
+    {
+      "id": "W-06",
+      "slug": "wms-pro",
+      "name": "enderecamento-clip",
+      "kind": "video",
+      "src": "media/wms-pro/enderecamento-clip",
+      "width": 1280,
+      "height": 800,
+      "displayWidth": 1280,
+      "displayHeight": 800,
+      "durationSec": 9,
+      "loop": true,
+      "muted": true,
+      "sources": [
+        {
+          "src": "media/wms-pro/enderecamento-clip.mp4",
+          "type": "video/mp4; codecs=\"avc1.640028\"",
+          "kB": 216.9
+        },
+        {
+          "src": "media/wms-pro/enderecamento-clip.webm",
+          "type": "video/webm; codecs=\"vp9\"",
+          "kB": 326.9
+        }
+      ],
+      "poster": "media/wms-pro/enderecamento-clip-poster",
+      "posterWidth": 1280,
+      "posterFiles": [
+        "media/wms-pro/enderecamento-clip-poster-1280.avif",
+        "media/wms-pro/enderecamento-clip-poster-1280.webp"
+      ],
+      "posterFallback": "media/wms-pro/enderecamento-clip-poster-1280.webp",
+      "alt": "Clipe do Endereçamento: um pallet em triagem é selecionado, o endereço 03010302 é digitado e formatado como 03.01.03.02 com a decomposição em corredor, estante, andar e box, o endereçamento é confirmado e o pallet sai da área de triagem."
+    },
+    {
+      "id": "W-07",
+      "slug": "wms-pro",
+      "name": "saida",
+      "kind": "image",
+      "src": "media/wms-pro/saida",
+      "width": 1280,
+      "height": 800,
+      "widths": [
+        960,
+        1600
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/wms-pro/saida-960.webp",
+      "alt": "Tela de Expedição do WMS Pro na aba \"Prontos para expedição\": indicadores de 7 pallets armazenados, 0 expedidos, 4,7 t disponíveis e 4 depósitos, campo de leitura e busca, filtro por depósito e os cartões dos pallets fictícios prontos para saída.",
+      "variants": [
+        {
+          "src": "media/wms-pro/saida-1600.avif",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/avif",
+          "kB": 41.2
+        },
+        {
+          "src": "media/wms-pro/saida-1600.webp",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/webp",
+          "kB": 61.6
+        },
+        {
+          "src": "media/wms-pro/saida-960.avif",
+          "width": 960,
+          "height": 600,
+          "type": "image/avif",
+          "kB": 22.2
+        },
+        {
+          "src": "media/wms-pro/saida-960.webp",
+          "width": 960,
+          "height": 600,
+          "type": "image/webp",
+          "kB": 30.2
+        }
+      ]
+    },
+    {
+      "id": "W-08",
+      "slug": "wms-pro",
+      "name": "saida-clip",
+      "kind": "video",
+      "src": "media/wms-pro/saida-clip",
+      "width": 1280,
+      "height": 800,
+      "displayWidth": 1280,
+      "displayHeight": 800,
+      "durationSec": 8.2,
+      "loop": true,
+      "muted": true,
+      "sources": [
+        {
+          "src": "media/wms-pro/saida-clip.mp4",
+          "type": "video/mp4; codecs=\"avc1.640028\"",
+          "kB": 261.3
+        },
+        {
+          "src": "media/wms-pro/saida-clip.webm",
+          "type": "video/webm; codecs=\"vp9\"",
+          "kB": 326.7
+        }
+      ],
+      "poster": "media/wms-pro/saida-clip-poster",
+      "posterWidth": 1280,
+      "posterFiles": [
+        "media/wms-pro/saida-clip-poster-1280.avif",
+        "media/wms-pro/saida-clip-poster-1280.webp"
+      ],
+      "posterFallback": "media/wms-pro/saida-clip-poster-1280.webp",
+      "alt": "Clipe da Expedição: busca por MAT-10021, clique em \"Separar e expedir\", a janela de confirmação abre e o destino é trocado para \"Doca 02\"; ao confirmar, o cartão some da lista e o indicador de expedidos sobe para 1."
+    },
+    {
+      "id": "W-09",
+      "slug": "wms-pro",
+      "name": "sincronizacao",
+      "kind": "image",
+      "src": "media/wms-pro/sincronizacao",
+      "width": 1280,
+      "height": 800,
+      "widths": [
+        960,
+        1600
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/wms-pro/sincronizacao-960.webp",
+      "alt": "Janela \"Status do banco de dados\" do WMS Pro: conexão Supabase PostgreSQL operacional com latência de 38 ms, 4 pallets em triagem e 7 armazenados, fila de sincronização com 0 pendentes e a mensagem de que todos os dados do coletor foram enviados; operador \"Usuário Demo\", internet conectada, leitor Honeywell EDA52.",
+      "variants": [
+        {
+          "src": "media/wms-pro/sincronizacao-1600.avif",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/avif",
+          "kB": 22.4
+        },
+        {
+          "src": "media/wms-pro/sincronizacao-1600.webp",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/webp",
+          "kB": 34.1
+        },
+        {
+          "src": "media/wms-pro/sincronizacao-960.avif",
+          "width": 960,
+          "height": 600,
+          "type": "image/avif",
+          "kB": 12.2
+        },
+        {
+          "src": "media/wms-pro/sincronizacao-960.webp",
+          "width": 960,
+          "height": 600,
+          "type": "image/webp",
+          "kB": 16.8
+        }
+      ]
+    },
+    {
+      "id": "W-10",
+      "slug": "wms-pro",
+      "name": "offline-clip",
+      "kind": "video",
+      "src": "media/wms-pro/offline-clip",
+      "width": 1280,
+      "height": 800,
+      "displayWidth": 1280,
+      "displayHeight": 800,
+      "durationSec": 12.6,
+      "loop": true,
+      "muted": true,
+      "sources": [
+        {
+          "src": "media/wms-pro/offline-clip.mp4",
+          "type": "video/mp4; codecs=\"avc1.640028\"",
+          "kB": 260.6
+        },
+        {
+          "src": "media/wms-pro/offline-clip.webm",
+          "type": "video/webm; codecs=\"vp9\"",
+          "kB": 375.4
+        }
+      ],
+      "poster": "media/wms-pro/offline-clip-poster",
+      "posterWidth": 1280,
+      "posterFiles": [
+        "media/wms-pro/offline-clip-poster-1280.avif",
+        "media/wms-pro/offline-clip-poster-1280.webp"
+      ],
+      "posterFallback": "media/wms-pro/offline-clip-poster-1280.webp",
+      "alt": "Clipe do modo offline: a rede cai e o indicador do topo muda para \"Modo offline\"; uma leitura é registrada e fica salva no aparelho (\"1 no aparelho\"); quando a rede volta, a fila sincroniza sozinha e o indicador volta a \"Supabase online\"."
+    },
+    {
+      "id": "W-11",
+      "slug": "wms-pro",
+      "name": "login",
+      "kind": "image",
+      "src": "media/wms-pro/login",
+      "width": 1280,
+      "height": 800,
+      "widths": [
+        960,
+        1600
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/wms-pro/login-960.webp",
+      "alt": "Tela de login do WMS Pro: à esquerda, o título \"Do recebimento à expedição, sem perder um pallet.\" e três destaques (leitura contínua com coletor Honeywell, operação offline, endereçamento rastreável); à direita, o formulário vazio de e-mail e senha.",
+      "variants": [
+        {
+          "src": "media/wms-pro/login-1600.avif",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/avif",
+          "kB": 40.2
+        },
+        {
+          "src": "media/wms-pro/login-1600.webp",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/webp",
+          "kB": 63.9
+        },
+        {
+          "src": "media/wms-pro/login-960.avif",
+          "width": 960,
+          "height": 600,
+          "type": "image/avif",
+          "kB": 22.1
+        },
+        {
+          "src": "media/wms-pro/login-960.webp",
+          "width": 960,
+          "height": 600,
+          "type": "image/webp",
+          "kB": 31.7
+        }
+      ]
+    },
+    {
+      "id": "W-12",
+      "slug": "wms-pro",
+      "name": "painel-coletor",
+      "kind": "image",
+      "src": "media/wms-pro/painel-coletor",
+      "width": 390,
+      "height": 844,
+      "widths": [
+        390,
+        780
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/wms-pro/painel-coletor-780.webp",
+      "alt": "Painel do WMS Pro na tela do coletor (celular), com os indicadores de pallets e a barra de navegação inferior Início, Receber, Endereçar, Expedir e Consultar.",
+      "variants": [
+        {
+          "src": "media/wms-pro/painel-coletor-390.avif",
+          "width": 390,
+          "height": 844,
+          "type": "image/avif",
+          "kB": 13.6
+        },
+        {
+          "src": "media/wms-pro/painel-coletor-390.webp",
+          "width": 390,
+          "height": 844,
+          "type": "image/webp",
+          "kB": 21.2
+        },
+        {
+          "src": "media/wms-pro/painel-coletor-780.avif",
+          "width": 780,
+          "height": 1688,
+          "type": "image/avif",
+          "kB": 14.1
+        },
+        {
+          "src": "media/wms-pro/painel-coletor-780.webp",
+          "width": 780,
+          "height": 1688,
+          "type": "image/webp",
+          "kB": 54.4
+        }
+      ]
+    },
+    {
+      "id": "W-13",
+      "slug": "wms-pro",
+      "name": "entrada-coletor",
+      "kind": "image",
+      "src": "media/wms-pro/entrada-coletor",
+      "width": 390,
+      "height": 844,
+      "widths": [
+        390,
+        780
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/wms-pro/entrada-coletor-780.webp",
+      "alt": "Recebimento no coletor (celular) preenchido com o material fictício MAT-10021, lote L2611, descrição \"Adesivo Base Água 25 KG\" e quantidade conferida.",
+      "variants": [
+        {
+          "src": "media/wms-pro/entrada-coletor-390.avif",
+          "width": 390,
+          "height": 844,
+          "type": "image/avif",
+          "kB": 12.4
+        },
+        {
+          "src": "media/wms-pro/entrada-coletor-390.webp",
+          "width": 390,
+          "height": 844,
+          "type": "image/webp",
+          "kB": 18.5
+        },
+        {
+          "src": "media/wms-pro/entrada-coletor-780.avif",
+          "width": 780,
+          "height": 1688,
+          "type": "image/avif",
+          "kB": 14
+        },
+        {
+          "src": "media/wms-pro/entrada-coletor-780.webp",
+          "width": 780,
+          "height": 1688,
+          "type": "image/webp",
+          "kB": 46.3
+        }
+      ]
+    },
+    {
+      "id": "W-14",
+      "slug": "wms-pro",
+      "name": "enderecamento-coletor",
+      "kind": "image",
+      "src": "media/wms-pro/enderecamento-coletor",
+      "width": 390,
+      "height": 844,
+      "widths": [
+        390,
+        780
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/wms-pro/enderecamento-coletor-780.webp",
+      "alt": "Endereçamento no coletor (celular): pallet \"Selante Cartucho 280 ML\" selecionado, endereço 03.01.03.02 decomposto em corredor, estante, andar e box, e as posições frequentes em botões grandes.",
+      "variants": [
+        {
+          "src": "media/wms-pro/enderecamento-coletor-390.avif",
+          "width": 390,
+          "height": 844,
+          "type": "image/avif",
+          "kB": 13.9
+        },
+        {
+          "src": "media/wms-pro/enderecamento-coletor-390.webp",
+          "width": 390,
+          "height": 844,
+          "type": "image/webp",
+          "kB": 21.2
+        },
+        {
+          "src": "media/wms-pro/enderecamento-coletor-780.avif",
+          "width": 780,
+          "height": 1688,
+          "type": "image/avif",
+          "kB": 14.6
+        },
+        {
+          "src": "media/wms-pro/enderecamento-coletor-780.webp",
+          "width": 780,
+          "height": 1688,
+          "type": "image/webp",
+          "kB": 52.1
+        }
+      ]
+    },
+    {
+      "id": "W-15",
+      "slug": "wms-pro",
+      "name": "saida-coletor",
+      "kind": "image",
+      "src": "media/wms-pro/saida-coletor",
+      "width": 390,
+      "height": 844,
+      "widths": [
+        390,
+        780
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/wms-pro/saida-coletor-780.webp",
+      "alt": "Expedição no coletor (celular), com indicadores, campo de leitura e os cartões de pallets prontos para expedir.",
+      "variants": [
+        {
+          "src": "media/wms-pro/saida-coletor-390.avif",
+          "width": 390,
+          "height": 844,
+          "type": "image/avif",
+          "kB": 14.6
+        },
+        {
+          "src": "media/wms-pro/saida-coletor-390.webp",
+          "width": 390,
+          "height": 844,
+          "type": "image/webp",
+          "kB": 22.5
+        },
+        {
+          "src": "media/wms-pro/saida-coletor-780.avif",
+          "width": 780,
+          "height": 1688,
+          "type": "image/avif",
+          "kB": 15.8
+        },
+        {
+          "src": "media/wms-pro/saida-coletor-780.webp",
+          "width": 780,
+          "height": 1688,
+          "type": "image/webp",
+          "kB": 53.8
+        }
+      ]
+    },
+    {
+      "id": "W-16",
+      "slug": "wms-pro",
+      "name": "coletor-clip",
+      "kind": "video",
+      "src": "media/wms-pro/coletor-clip",
+      "width": 780,
+      "height": 1688,
+      "displayWidth": 780,
+      "displayHeight": 1688,
+      "durationSec": 9.8,
+      "loop": true,
+      "muted": true,
+      "sources": [
+        {
+          "src": "media/wms-pro/coletor-clip.mp4",
+          "type": "video/mp4; codecs=\"avc1.640028\"",
+          "kB": 314.6
+        },
+        {
+          "src": "media/wms-pro/coletor-clip.webm",
+          "type": "video/webm; codecs=\"vp9\"",
+          "kB": 433.2
+        }
+      ],
+      "poster": "media/wms-pro/coletor-clip-poster",
+      "posterWidth": 780,
+      "posterFiles": [
+        "media/wms-pro/coletor-clip-poster-780.avif",
+        "media/wms-pro/coletor-clip-poster-780.webp"
+      ],
+      "posterFallback": "media/wms-pro/coletor-clip-poster-780.webp",
+      "alt": "Clipe do Recebimento no coletor (celular): o código é lido, os dados do material se preenchem, a quantidade 40 é digitada e o pallet é registrado na triagem."
+    },
+    {
+      "id": "P-01",
+      "slug": "pdi-studio",
+      "name": "editor",
+      "kind": "image",
+      "src": "media/pdi-studio/editor",
+      "width": 1440,
+      "height": 900,
+      "widths": [
+        960,
+        1600
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/pdi-studio/editor-960.webp",
+      "alt": "Editor do PDI Studio (tema escuro) com uma imagem de teste sintética (engrenagens, montanhas e o texto \"PDI Studio · Teste 01\") à esquerda e, à direita, o resultado com detecção de bordas; o painel de camadas lista Passa Alta, Filtro Gauss e Tons de Cinza sobre a imagem original.",
+      "variants": [
+        {
+          "src": "media/pdi-studio/editor-1600.avif",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/avif",
+          "kB": 27
+        },
+        {
+          "src": "media/pdi-studio/editor-1600.webp",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/webp",
+          "kB": 38.5
+        },
+        {
+          "src": "media/pdi-studio/editor-960.avif",
+          "width": 960,
+          "height": 600,
+          "type": "image/avif",
+          "kB": 14
+        },
+        {
+          "src": "media/pdi-studio/editor-960.webp",
+          "width": 960,
+          "height": 600,
+          "type": "image/webp",
+          "kB": 19.6
+        }
+      ]
+    },
+    {
+      "id": "P-02",
+      "slug": "pdi-studio",
+      "name": "editor-clip",
+      "kind": "video",
+      "src": "media/pdi-studio/editor-clip",
+      "width": 1280,
+      "height": 800,
+      "displayWidth": 1280,
+      "displayHeight": 800,
+      "durationSec": 13.9,
+      "loop": true,
+      "muted": true,
+      "sources": [
+        {
+          "src": "media/pdi-studio/editor-clip.mp4",
+          "type": "video/mp4; codecs=\"avc1.640028\"",
+          "kB": 254.6
+        },
+        {
+          "src": "media/pdi-studio/editor-clip.webm",
+          "type": "video/webm; codecs=\"vp9\"",
+          "kB": 299.7
+        }
+      ],
+      "poster": "media/pdi-studio/editor-clip-poster",
+      "posterWidth": 1280,
+      "posterFiles": [
+        "media/pdi-studio/editor-clip-poster-1280.avif",
+        "media/pdi-studio/editor-clip-poster-1280.webp"
+      ],
+      "posterFallback": "media/pdi-studio/editor-clip-poster-1280.webp",
+      "alt": "Clipe do PDI Studio: uma imagem de teste é aberta, o filtro Tons de Cinza é aplicado e depois o Passa Alta (bordas); as camadas aparecem na lista e a camada de bordas é desligada e religada, alternando o resultado entre cinza e bordas."
+    },
+    {
+      "id": "P-03a",
+      "slug": "pdi-studio",
+      "name": "ba-cinza-antes",
+      "kind": "image",
+      "src": "media/pdi-studio/ba-cinza-antes",
+      "width": 1200,
+      "height": 800,
+      "widths": [
+        600,
+        1200
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/pdi-studio/ba-cinza-antes-1200.webp",
+      "alt": "Imagem de teste original e colorida: engrenagens metálica e dourada, montanhas sob um céu de pôr do sol, formas geométricas e o texto \"PDI Studio · Teste 01\".",
+      "variants": [
+        {
+          "src": "media/pdi-studio/ba-cinza-antes-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "type": "image/avif",
+          "kB": 17.5
+        },
+        {
+          "src": "media/pdi-studio/ba-cinza-antes-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "type": "image/webp",
+          "kB": 27.6
+        },
+        {
+          "src": "media/pdi-studio/ba-cinza-antes-600.avif",
+          "width": 600,
+          "height": 400,
+          "type": "image/avif",
+          "kB": 7.7
+        },
+        {
+          "src": "media/pdi-studio/ba-cinza-antes-600.webp",
+          "width": 600,
+          "height": 400,
+          "type": "image/webp",
+          "kB": 11
+        }
+      ]
+    },
+    {
+      "id": "P-03b",
+      "slug": "pdi-studio",
+      "name": "ba-cinza-depois",
+      "kind": "image",
+      "src": "media/pdi-studio/ba-cinza-depois",
+      "width": 1200,
+      "height": 800,
+      "widths": [
+        600,
+        1200
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/pdi-studio/ba-cinza-depois-1200.webp",
+      "alt": "A mesma imagem convertida em tons de cinza pelo PDI Studio.",
+      "variants": [
+        {
+          "src": "media/pdi-studio/ba-cinza-depois-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "type": "image/avif",
+          "kB": 14.7
+        },
+        {
+          "src": "media/pdi-studio/ba-cinza-depois-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "type": "image/webp",
+          "kB": 20.2
+        },
+        {
+          "src": "media/pdi-studio/ba-cinza-depois-600.avif",
+          "width": 600,
+          "height": 400,
+          "type": "image/avif",
+          "kB": 6.3
+        },
+        {
+          "src": "media/pdi-studio/ba-cinza-depois-600.webp",
+          "width": 600,
+          "height": 400,
+          "type": "image/webp",
+          "kB": 7.5
+        }
+      ]
+    },
+    {
+      "id": "P-04a",
+      "slug": "pdi-studio",
+      "name": "ba-bordas-antes",
+      "kind": "image",
+      "src": "media/pdi-studio/ba-bordas-antes",
+      "width": 1200,
+      "height": 800,
+      "widths": [
+        600,
+        1200
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/pdi-studio/ba-bordas-antes-1200.webp",
+      "alt": "Imagem de teste original e colorida, antes da detecção de bordas.",
+      "variants": [
+        {
+          "src": "media/pdi-studio/ba-bordas-antes-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "type": "image/avif",
+          "kB": 17.5
+        },
+        {
+          "src": "media/pdi-studio/ba-bordas-antes-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "type": "image/webp",
+          "kB": 27.6
+        },
+        {
+          "src": "media/pdi-studio/ba-bordas-antes-600.avif",
+          "width": 600,
+          "height": 400,
+          "type": "image/avif",
+          "kB": 7.7
+        },
+        {
+          "src": "media/pdi-studio/ba-bordas-antes-600.webp",
+          "width": 600,
+          "height": 400,
+          "type": "image/webp",
+          "kB": 11
+        }
+      ]
+    },
+    {
+      "id": "P-04b",
+      "slug": "pdi-studio",
+      "name": "ba-bordas-depois",
+      "kind": "image",
+      "src": "media/pdi-studio/ba-bordas-depois",
+      "width": 1200,
+      "height": 800,
+      "widths": [
+        600,
+        1200
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/pdi-studio/ba-bordas-depois-1200.webp",
+      "alt": "Resultado da detecção de bordas (filtro passa-alta Sobel) do PDI Studio: contornos claros das engrenagens, montanhas e letras sobre fundo preto.",
+      "variants": [
+        {
+          "src": "media/pdi-studio/ba-bordas-depois-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "type": "image/avif",
+          "kB": 69.7
+        },
+        {
+          "src": "media/pdi-studio/ba-bordas-depois-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "type": "image/webp",
+          "kB": 106
+        },
+        {
+          "src": "media/pdi-studio/ba-bordas-depois-600.avif",
+          "width": 600,
+          "height": 400,
+          "type": "image/avif",
+          "kB": 14.8
+        },
+        {
+          "src": "media/pdi-studio/ba-bordas-depois-600.webp",
+          "width": 600,
+          "height": 400,
+          "type": "image/webp",
+          "kB": 20.7
+        }
+      ]
+    },
+    {
+      "id": "P-05a",
+      "slug": "pdi-studio",
+      "name": "ba-limiar-antes",
+      "kind": "image",
+      "src": "media/pdi-studio/ba-limiar-antes",
+      "width": 1200,
+      "height": 800,
+      "widths": [
+        600,
+        1200
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/pdi-studio/ba-limiar-antes-1200.webp",
+      "alt": "Imagem de teste original e colorida, antes da limiarização.",
+      "variants": [
+        {
+          "src": "media/pdi-studio/ba-limiar-antes-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "type": "image/avif",
+          "kB": 17.5
+        },
+        {
+          "src": "media/pdi-studio/ba-limiar-antes-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "type": "image/webp",
+          "kB": 27.6
+        },
+        {
+          "src": "media/pdi-studio/ba-limiar-antes-600.avif",
+          "width": 600,
+          "height": 400,
+          "type": "image/avif",
+          "kB": 7.7
+        },
+        {
+          "src": "media/pdi-studio/ba-limiar-antes-600.webp",
+          "width": 600,
+          "height": 400,
+          "type": "image/webp",
+          "kB": 11
+        }
+      ]
+    },
+    {
+      "id": "P-05b",
+      "slug": "pdi-studio",
+      "name": "ba-limiar-depois",
+      "kind": "image",
+      "src": "media/pdi-studio/ba-limiar-depois",
+      "width": 1200,
+      "height": 800,
+      "widths": [
+        600,
+        1200
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/pdi-studio/ba-limiar-depois-1200.webp",
+      "alt": "Resultado da limiarização do PDI Studio (limiar 120): a imagem separada em preto e branco, com engrenagens, sol e formas em branco.",
+      "variants": [
+        {
+          "src": "media/pdi-studio/ba-limiar-depois-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "type": "image/avif",
+          "kB": 7
+        },
+        {
+          "src": "media/pdi-studio/ba-limiar-depois-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "type": "image/webp",
+          "kB": 34.9
+        },
+        {
+          "src": "media/pdi-studio/ba-limiar-depois-600.avif",
+          "width": 600,
+          "height": 400,
+          "type": "image/avif",
+          "kB": 8.2
+        },
+        {
+          "src": "media/pdi-studio/ba-limiar-depois-600.webp",
+          "width": 600,
+          "height": 400,
+          "type": "image/webp",
+          "kB": 12.5
+        }
+      ]
+    },
+    {
+      "id": "P-06a",
+      "slug": "pdi-studio",
+      "name": "ba-afinamento-antes",
+      "kind": "image",
+      "src": "media/pdi-studio/ba-afinamento-antes",
+      "width": 1200,
+      "height": 800,
+      "widths": [
+        600,
+        1200
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/pdi-studio/ba-afinamento-antes-1200.webp",
+      "alt": "Formas pretas grossas em fundo claro: as letras \"PDI\", uma engrenagem, uma curva e uma barra vertical.",
+      "variants": [
+        {
+          "src": "media/pdi-studio/ba-afinamento-antes-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "type": "image/avif",
+          "kB": 7
+        },
+        {
+          "src": "media/pdi-studio/ba-afinamento-antes-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "type": "image/webp",
+          "kB": 11.1
+        },
+        {
+          "src": "media/pdi-studio/ba-afinamento-antes-600.avif",
+          "width": 600,
+          "height": 400,
+          "type": "image/avif",
+          "kB": 4.4
+        },
+        {
+          "src": "media/pdi-studio/ba-afinamento-antes-600.webp",
+          "width": 600,
+          "height": 400,
+          "type": "image/webp",
+          "kB": 5.7
+        }
+      ]
+    },
+    {
+      "id": "P-06b",
+      "slug": "pdi-studio",
+      "name": "ba-afinamento-depois",
+      "kind": "image",
+      "src": "media/pdi-studio/ba-afinamento-depois",
+      "width": 1200,
+      "height": 800,
+      "widths": [
+        600,
+        1200
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/pdi-studio/ba-afinamento-depois-1200.webp",
+      "alt": "Resultado do afinamento (esqueletização, método Steinfeld) do PDI Studio: as mesmas formas reduzidas a traços finos.",
+      "variants": [
+        {
+          "src": "media/pdi-studio/ba-afinamento-depois-1200.avif",
+          "width": 1200,
+          "height": 800,
+          "type": "image/avif",
+          "kB": 9.4
+        },
+        {
+          "src": "media/pdi-studio/ba-afinamento-depois-1200.webp",
+          "width": 1200,
+          "height": 800,
+          "type": "image/webp",
+          "kB": 8.1
+        },
+        {
+          "src": "media/pdi-studio/ba-afinamento-depois-600.avif",
+          "width": 600,
+          "height": 400,
+          "type": "image/avif",
+          "kB": 3.5
+        },
+        {
+          "src": "media/pdi-studio/ba-afinamento-depois-600.webp",
+          "width": 600,
+          "height": 400,
+          "type": "image/webp",
+          "kB": 5.8
+        }
+      ]
+    },
+    {
+      "id": "P-07",
+      "slug": "pdi-studio",
+      "name": "desafio-relogio-clip",
+      "kind": "video",
+      "src": "media/pdi-studio/desafio-relogio-clip",
+      "width": 1280,
+      "height": 800,
+      "displayWidth": 1280,
+      "displayHeight": 800,
+      "durationSec": 9.8,
+      "loop": true,
+      "muted": true,
+      "sources": [
+        {
+          "src": "media/pdi-studio/desafio-relogio-clip.mp4",
+          "type": "video/mp4; codecs=\"avc1.640028\"",
+          "kB": 149.5
+        },
+        {
+          "src": "media/pdi-studio/desafio-relogio-clip.webm",
+          "type": "video/webm; codecs=\"vp9\"",
+          "kB": 170.3
+        }
+      ],
+      "poster": "media/pdi-studio/desafio-relogio-clip-poster",
+      "posterWidth": 1280,
+      "posterFiles": [
+        "media/pdi-studio/desafio-relogio-clip-poster-1280.avif",
+        "media/pdi-studio/desafio-relogio-clip-poster-1280.webp"
+      ],
+      "posterFallback": "media/pdi-studio/desafio-relogio-clip-poster-1280.webp",
+      "alt": "Clipe do desafio do relógio no PDI Studio: a imagem de um relógio analógico é aberta, o desafio Relógio é aplicado e o sistema circula o mostrador, isola os ponteiros e escreve \"HORA LIDA: 10:10\"."
+    },
+    {
+      "id": "P-08a",
+      "slug": "pdi-studio",
+      "name": "desafio-relogio",
+      "kind": "image",
+      "src": "media/pdi-studio/desafio-relogio",
+      "width": 800,
+      "height": 600,
+      "widths": [
+        400,
+        800
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/pdi-studio/desafio-relogio-800.webp",
+      "alt": "Desafio do relógio: mostrador circulado em vermelho, ponteiros afinados e o texto \"HORA LIDA: 10:10\".",
+      "variants": [
+        {
+          "src": "media/pdi-studio/desafio-relogio-400.avif",
+          "width": 400,
+          "height": 300,
+          "type": "image/avif",
+          "kB": 3
+        },
+        {
+          "src": "media/pdi-studio/desafio-relogio-400.webp",
+          "width": 400,
+          "height": 300,
+          "type": "image/webp",
+          "kB": 5.7
+        },
+        {
+          "src": "media/pdi-studio/desafio-relogio-800.avif",
+          "width": 800,
+          "height": 600,
+          "type": "image/avif",
+          "kB": 7.1
+        },
+        {
+          "src": "media/pdi-studio/desafio-relogio-800.webp",
+          "width": 800,
+          "height": 600,
+          "type": "image/webp",
+          "kB": 12.5
+        }
+      ]
+    },
+    {
+      "id": "P-08b",
+      "slug": "pdi-studio",
+      "name": "desafio-objetos",
+      "kind": "image",
+      "src": "media/pdi-studio/desafio-objetos",
+      "width": 800,
+      "height": 600,
+      "widths": [
+        400,
+        800
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/pdi-studio/desafio-objetos-800.webp",
+      "alt": "Desafio de objetos coloridos: círculos e quadrados vermelho, verde, azul e amarelo marcados e classificados, com a legenda \"TOTAL: 4 objetos\".",
+      "variants": [
+        {
+          "src": "media/pdi-studio/desafio-objetos-400.avif",
+          "width": 400,
+          "height": 300,
+          "type": "image/avif",
+          "kB": 5.4
+        },
+        {
+          "src": "media/pdi-studio/desafio-objetos-400.webp",
+          "width": 400,
+          "height": 300,
+          "type": "image/webp",
+          "kB": 9.3
+        },
+        {
+          "src": "media/pdi-studio/desafio-objetos-800.avif",
+          "width": 800,
+          "height": 600,
+          "type": "image/avif",
+          "kB": 11.2
+        },
+        {
+          "src": "media/pdi-studio/desafio-objetos-800.webp",
+          "width": 800,
+          "height": 600,
+          "type": "image/webp",
+          "kB": 20.6
+        }
+      ]
+    },
+    {
+      "id": "P-08c",
+      "slug": "pdi-studio",
+      "name": "desafio-letras",
+      "kind": "image",
+      "src": "media/pdi-studio/desafio-letras",
+      "width": 800,
+      "height": 600,
+      "widths": [
+        400,
+        800
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/pdi-studio/desafio-letras-800.webp",
+      "alt": "Desafio de letras: as letras A, B e C detectadas com caixas verdes e a legenda \"LETRAS: A, B, C\".",
+      "variants": [
+        {
+          "src": "media/pdi-studio/desafio-letras-400.avif",
+          "width": 400,
+          "height": 300,
+          "type": "image/avif",
+          "kB": 2.8
+        },
+        {
+          "src": "media/pdi-studio/desafio-letras-400.webp",
+          "width": 400,
+          "height": 300,
+          "type": "image/webp",
+          "kB": 4.6
+        },
+        {
+          "src": "media/pdi-studio/desafio-letras-800.avif",
+          "width": 800,
+          "height": 600,
+          "type": "image/avif",
+          "kB": 5.3
+        },
+        {
+          "src": "media/pdi-studio/desafio-letras-800.webp",
+          "width": 800,
+          "height": 600,
+          "type": "image/webp",
+          "kB": 8.7
+        }
+      ]
+    },
+    {
+      "id": "P-08d",
+      "slug": "pdi-studio",
+      "name": "desafio-placas",
+      "kind": "image",
+      "src": "media/pdi-studio/desafio-placas",
+      "width": 800,
+      "height": 600,
+      "widths": [
+        400,
+        800
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/pdi-studio/desafio-placas-800.webp",
+      "alt": "Desafio de placas: uma placa octogonal \"PARE\" e uma placa circular de velocidade \"60\" detectadas e identificadas como \"Pare\" e \"Velocidade máxima\".",
+      "variants": [
+        {
+          "src": "media/pdi-studio/desafio-placas-400.avif",
+          "width": 400,
+          "height": 300,
+          "type": "image/avif",
+          "kB": 5.2
+        },
+        {
+          "src": "media/pdi-studio/desafio-placas-400.webp",
+          "width": 400,
+          "height": 300,
+          "type": "image/webp",
+          "kB": 9.4
+        },
+        {
+          "src": "media/pdi-studio/desafio-placas-800.avif",
+          "width": 800,
+          "height": 600,
+          "type": "image/avif",
+          "kB": 10.3
+        },
+        {
+          "src": "media/pdi-studio/desafio-placas-800.webp",
+          "width": 800,
+          "height": 600,
+          "type": "image/webp",
+          "kB": 19.1
+        }
+      ]
+    },
+    {
+      "id": "P-08e",
+      "slug": "pdi-studio",
+      "name": "desafio-graficos",
+      "kind": "image",
+      "src": "media/pdi-studio/desafio-graficos",
+      "width": 800,
+      "height": 600,
+      "widths": [
+        400,
+        800
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/pdi-studio/desafio-graficos-800.webp",
+      "alt": "Desafio de gráfico de barras: cinco barras medidas, a maior marcada em verde e a menor em vermelho, com a legenda \"Maior = 20 | Menor = 5\".",
+      "variants": [
+        {
+          "src": "media/pdi-studio/desafio-graficos-400.avif",
+          "width": 400,
+          "height": 300,
+          "type": "image/avif",
+          "kB": 3
+        },
+        {
+          "src": "media/pdi-studio/desafio-graficos-400.webp",
+          "width": 400,
+          "height": 300,
+          "type": "image/webp",
+          "kB": 4.6
+        },
+        {
+          "src": "media/pdi-studio/desafio-graficos-800.avif",
+          "width": 800,
+          "height": 600,
+          "type": "image/avif",
+          "kB": 5.7
+        },
+        {
+          "src": "media/pdi-studio/desafio-graficos-800.webp",
+          "width": 800,
+          "height": 600,
+          "type": "image/webp",
+          "kB": 8.8
+        }
+      ]
+    },
+    {
+      "id": "G-01",
+      "slug": "antigravity",
+      "name": "menu",
+      "kind": "image",
+      "src": "media/antigravity/menu",
+      "width": 1440,
+      "height": 900,
+      "widths": [
+        960,
+        1600
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/antigravity/menu-960.webp",
+      "alt": "Tela inicial do jogo Antigravity em fundo espacial escuro: título \"Antigravity · Asteroid Defense\", botões Zen Mode, Chaotic Mode e Word Stats, e os recordes dos dois modos.",
+      "variants": [
+        {
+          "src": "media/antigravity/menu-1600.avif",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/avif",
+          "kB": 9.9
+        },
+        {
+          "src": "media/antigravity/menu-1600.webp",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/webp",
+          "kB": 19.8
+        },
+        {
+          "src": "media/antigravity/menu-960.avif",
+          "width": 960,
+          "height": 600,
+          "type": "image/avif",
+          "kB": 5.7
+        },
+        {
+          "src": "media/antigravity/menu-960.webp",
+          "width": 960,
+          "height": 600,
+          "type": "image/webp",
+          "kB": 10.8
+        }
+      ]
+    },
+    {
+      "id": "G-02",
+      "slug": "antigravity",
+      "name": "jogo-clip",
+      "kind": "video",
+      "src": "media/antigravity/jogo-clip",
+      "width": 1280,
+      "height": 800,
+      "displayWidth": 1280,
+      "displayHeight": 800,
+      "durationSec": 11.6,
+      "loop": true,
+      "muted": true,
+      "sources": [
+        {
+          "src": "media/antigravity/jogo-clip.mp4",
+          "type": "video/mp4; codecs=\"avc1.640028\"",
+          "kB": 390.1
+        },
+        {
+          "src": "media/antigravity/jogo-clip.webm",
+          "type": "video/webm; codecs=\"vp9\"",
+          "kB": 406.8
+        }
+      ],
+      "poster": "media/antigravity/jogo-clip-poster",
+      "posterWidth": 1280,
+      "posterFiles": [
+        "media/antigravity/jogo-clip-poster-1280.avif",
+        "media/antigravity/jogo-clip-poster-1280.webp"
+      ],
+      "posterFallback": "media/antigravity/jogo-clip-poster-1280.webp",
+      "alt": "Clipe do modo Zen do Antigravity: asteroides com ícones de palavras em inglês descem em direção à nave; a cada palavra reconhecida, a nave dispara um laser, o asteroide explode e o contador \"Streak\" sobe de 0 a 3."
+    },
+    {
+      "id": "G-03",
+      "slug": "antigravity",
+      "name": "estatisticas",
+      "kind": "image",
+      "src": "media/antigravity/estatisticas",
+      "width": 1440,
+      "height": 900,
+      "widths": [
+        960,
+        1600
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/antigravity/estatisticas-960.webp",
+      "alt": "Tela \"Word Stats\" do Antigravity com a taxa de acerto por palavra (dados de demonstração): rocket 100%, coffee 83%, keyboard 80%, laptop 67%, wrench 60%, glasses 50%, shoes 33% e wheel 25%.",
+      "variants": [
+        {
+          "src": "media/antigravity/estatisticas-1600.avif",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/avif",
+          "kB": 14.7
+        },
+        {
+          "src": "media/antigravity/estatisticas-1600.webp",
+          "width": 1600,
+          "height": 1000,
+          "type": "image/webp",
+          "kB": 25.3
+        },
+        {
+          "src": "media/antigravity/estatisticas-960.avif",
+          "width": 960,
+          "height": 600,
+          "type": "image/avif",
+          "kB": 7.4
+        },
+        {
+          "src": "media/antigravity/estatisticas-960.webp",
+          "width": 960,
+          "height": 600,
+          "type": "image/webp",
+          "kB": 13
+        }
+      ]
+    },
+    {
+      "id": "D-01",
+      "slug": "lab",
+      "name": "dbt-metabase-clip",
+      "kind": "video",
+      "src": "media/lab/dbt-metabase-clip",
+      "width": 960,
+      "height": 600,
+      "displayWidth": 960,
+      "displayHeight": 600,
+      "durationSec": 8,
+      "loop": true,
+      "muted": true,
+      "sources": [
+        {
+          "src": "media/lab/dbt-metabase-clip.mp4",
+          "type": "video/mp4; codecs=\"avc1.640028\"",
+          "kB": 265.4
+        },
+        {
+          "src": "media/lab/dbt-metabase-clip.webm",
+          "type": "video/webm; codecs=\"vp9\"",
+          "kB": 312.9
+        }
+      ],
+      "poster": "media/lab/dbt-metabase-clip-poster",
+      "posterWidth": 960,
+      "posterFiles": [
+        "media/lab/dbt-metabase-clip-poster-960.avif",
+        "media/lab/dbt-metabase-clip-poster-960.webp"
+      ],
+      "posterFallback": "media/lab/dbt-metabase-clip-poster-960.webp",
+      "alt": "Clipe do painel \"Performance de E-commerce\" no Metabase (projeto de Mário Schenkel): indicadores de receita, pedidos, ticket médio e cancelamento, gráficos de receita e pedidos por mês, top produtos e receita por categoria, com a tela rolando."
+    },
+    {
+      "id": "D-02",
+      "slug": "lab",
+      "name": "churn",
+      "kind": "image",
+      "src": "media/lab/churn",
+      "width": 960,
+      "height": 600,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/lab/churn-960.webp",
+      "alt": "Topo do \"VoC Churn Dashboard\" (projeto de Mário Schenkel): filtros por dor do cliente e nível de risco, indicadores de clientes analisados, alertas de churn, ticket médio e score de sentimento, velocímetro de risco em 57,6% e mapa de dispersão sentimento × churn.",
+      "variants": [
+        {
+          "src": "media/lab/churn-480.avif",
+          "width": 480,
+          "height": 300,
+          "type": "image/avif",
+          "kB": 7.7
+        },
+        {
+          "src": "media/lab/churn-480.webp",
+          "width": 480,
+          "height": 300,
+          "type": "image/webp",
+          "kB": 9.9
+        },
+        {
+          "src": "media/lab/churn-960.avif",
+          "width": 960,
+          "height": 600,
+          "type": "image/avif",
+          "kB": 17.8
+        },
+        {
+          "src": "media/lab/churn-960.webp",
+          "width": 960,
+          "height": 600,
+          "type": "image/webp",
+          "kB": 24.7
+        }
+      ]
+    },
+    {
+      "id": "D-03",
+      "slug": "lab",
+      "name": "anatel",
+      "kind": "image",
+      "src": "media/lab/anatel",
+      "width": 960,
+      "height": 600,
+      "widths": [
+        480,
+        960
+      ],
+      "formats": [
+        "avif",
+        "webp"
+      ],
+      "fallback": "media/lab/anatel-960.webp",
+      "alt": "Miniatura só com texto do projeto BI Anatel M2M: \"Acessos M2M no Brasil\", análise dos acessos móveis entre máquinas a partir de dados públicos da Anatel, com as etiquetas Python, DuckDB e Metabase.",
+      "variants": [
+        {
+          "src": "media/lab/anatel-480.avif",
+          "width": 480,
+          "height": 300,
+          "type": "image/avif",
+          "kB": 7.4
+        },
+        {
+          "src": "media/lab/anatel-480.webp",
+          "width": 480,
+          "height": 300,
+          "type": "image/webp",
+          "kB": 8.8
+        },
+        {
+          "src": "media/lab/anatel-960.avif",
+          "width": 960,
+          "height": 600,
+          "type": "image/avif",
+          "kB": 13.7
+        },
+        {
+          "src": "media/lab/anatel-960.webp",
+          "width": 960,
+          "height": 600,
+          "type": "image/webp",
+          "kB": 20.6
+        }
+      ]
+    }
+  ],
+  "og": [
+    {
+      "id": "X-01",
+      "src": "media/og/home.png",
+      "designPath": "og/home.png",
+      "width": 1200,
+      "height": 630,
+      "type": "image/png",
+      "kB": 158,
+      "alt": "Imagem social da home: título \"Software que aguenta o chão de fábrica.\", nome Marco Schenkel Jr., desenvolvedor full stack, e a captura do painel do WMS Pro no palco azul."
+    },
+    {
+      "id": "X-02",
+      "src": "media/og/wms-pro.png",
+      "designPath": "og/wms-pro.png",
+      "width": 1200,
+      "height": 630,
+      "type": "image/png",
+      "kB": 250.3,
+      "alt": "Imagem social do case WMS Pro: palco azul com o título, selo \"Em produção\" e a captura do painel."
+    },
+    {
+      "id": "X-03",
+      "src": "media/og/wms-saas.png",
+      "designPath": "og/wms-saas.png",
+      "width": 1200,
+      "height": 630,
+      "type": "image/png",
+      "kB": 127.1,
+      "alt": "Imagem social do case WMS SaaS: palco azul com o título, selo \"Em construção\" e um diagrama de três empresas isoladas na mesma tabela."
+    },
+    {
+      "id": "X-04",
+      "src": "media/og/pdi-studio.png",
+      "designPath": "og/pdi-studio.png",
+      "width": 1200,
+      "height": 630,
+      "type": "image/png",
+      "kB": 211.5,
+      "alt": "Imagem social do case PDI Studio: palco azul com o título, selo \"No ar\" e a captura do editor com camadas."
+    },
+    {
+      "id": "X-05",
+      "src": "media/og/antigravity.png",
+      "designPath": "og/antigravity.png",
+      "width": 1200,
+      "height": 630,
+      "type": "image/png",
+      "kB": 166.9,
+      "alt": "Imagem social do case Antigravity: palco azul com o título, selo \"No ar\" e a tela inicial do jogo."
+    }
+  ],
+  "site": [
+    {
+      "id": "X-06",
+      "src": "media/site/favicon.svg",
+      "designPath": "favicon.svg",
+      "type": "image/svg+xml",
+      "kB": 0.4,
+      "alt": "Ícone \"~/\" em zarcão sobre fundo grafite."
+    },
+    {
+      "id": "X-06",
+      "src": "media/site/apple-touch-icon.png",
+      "designPath": "apple-touch-icon.png",
+      "width": 180,
+      "height": 180,
+      "type": "image/png",
+      "kB": 2.7,
+      "alt": "Ícone \"~/\" em zarcão sobre fundo grafite."
+    }
+  ],
+  "pending": [
+    {
+      "id": "W-17",
+      "name": "coletor-foto",
+      "reason": "Foto real do Honeywell EDA52 (P-07) depende do Marco."
+    },
+    {
+      "id": "S-01",
+      "name": "wms-saas/enderecos",
+      "reason": "Pendente P-08; não capturado."
+    },
+    {
+      "id": "S-02",
+      "name": "wms-saas/troca-operador",
+      "reason": "Pendente P-08; não capturado."
+    },
+    {
+      "id": "X-07",
+      "name": "sobre/marco",
+      "reason": "Retrato do Marco (P-03)."
+    },
+    {
+      "id": "X-08",
+      "name": "curriculo-marco-schenkel-jr.pdf",
+      "reason": "Currículo (P-04)."
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marcoschenkeljr.github.io/portfolio/sitemap.xml

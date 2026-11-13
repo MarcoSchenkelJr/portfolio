@@ -1,0 +1,41 @@
+{
+  "site": "https://marcoschenkeljr.github.io/portfolio",
+  "routes": {
+    "wms-pro": {
+      "path": "/projetos/wms-pro/",
+      "title": "WMS Pro · Gestão de armazém com coletor industrial · Marco Schenkel Jr.",
+      "description": "Case do WMS Pro: recebimento com leitura por coletor Honeywell, endereçamento de 504 posições, expedição, painel de ocupação e operação offline com sincronização para PostgreSQL.",
+      "ogImage": "media/og/wms-pro.png",
+      "schemaType": "CreativeWork",
+      "name": "WMS Pro"
+    },
+    "wms-saas": {
+      "path": "/projetos/wms-saas/",
+      "title": "WMS SaaS · WMS multiempresa em construção · Marco Schenkel Jr.",
+      "description": "Versão multiempresa do WMS: isolamento por RLS e chaves compostas no PostgreSQL, troca de operador por PIN e políticas de separação FIFO, FEFO e LIFO.",
+      "ogImage": "media/og/wms-saas.png",
+      "schemaType": "CreativeWork",
+      "name": "WMS SaaS"
+    },
+    "pdi-studio": {
+      "path": "/projetos/pdi-studio/",
+      "title": "PDI Studio · Editor de processamento de imagens · Marco Schenkel Jr.",
+      "description": "Editor web de processamento digital de imagens com camadas, feito com React, FastAPI e OpenCV. Filtros, morfologia, cinco desafios de visão computacional e exportação dos algoritmos em Python puro.",
+      "ogImage": "media/og/pdi-studio.png",
+      "schemaType": "SoftwareApplication",
+      "name": "PDI Studio",
+      "liveUrl": "https://pdistudio.vercel.app",
+      "applicationCategory": "MultimediaApplication"
+    },
+    "antigravity": {
+      "path": "/projetos/antigravity/",
+      "title": "Antigravity · Jogo de pronúncia por voz · Marco Schenkel Jr.",
+      "description": "Jogo de navegador para treinar pronúncia em inglês: fale a palavra no microfone para destruir o asteroide. Feito com JavaScript puro, Canvas 2D e Web Speech API.",
+      "ogImage": "media/og/antigravity.png",
+      "schemaType": "SoftwareApplication",
+      "name": "Antigravity",
+      "liveUrl": "https://marcoschenkeljr.github.io/antigravity-game/",
+      "applicationCategory": "GameApplication"
+    }
+  }
+}
