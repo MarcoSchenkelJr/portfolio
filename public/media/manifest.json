@@ -1626,7 +1626,7 @@
         "media/lab/dbt-metabase-clip-poster-960.webp"
       ],
       "posterFallback": "media/lab/dbt-metabase-clip-poster-960.webp",
-      "alt": "Clipe do painel \"Performance de E-commerce\" no Metabase (projeto de Mário Schenkel): indicadores de receita, pedidos, ticket médio e cancelamento, gráficos de receita e pedidos por mês, top produtos e receita por categoria, com a tela rolando."
+      "alt": "Clipe do painel \"Performance de E-commerce\" no Metabase (projeto desenvolvido em parceria com Mário Schenkel): indicadores de receita, pedidos, ticket médio e cancelamento, gráficos de receita e pedidos por mês, top produtos e receita por categoria, com a tela rolando."
     },
     {
       "id": "D-02",
@@ -1645,7 +1645,7 @@
         "webp"
       ],
       "fallback": "media/lab/churn-960.webp",
-      "alt": "Topo do \"VoC Churn Dashboard\" (projeto de Mário Schenkel): filtros por dor do cliente e nível de risco, indicadores de clientes analisados, alertas de churn, ticket médio e score de sentimento, velocímetro de risco em 57,6% e mapa de dispersão sentimento × churn.",
+      "alt": "Topo do \"VoC Churn Dashboard\" (projeto desenvolvido em parceria com Mário Schenkel): filtros por dor do cliente e nível de risco, indicadores de clientes analisados, alertas de churn, ticket médio e score de sentimento, velocímetro de risco em 57,6% e mapa de dispersão sentimento × churn.",
       "variants": [
         {
           "src": "media/lab/churn-480.avif",

@@ -50,7 +50,7 @@ export const media = {
   },
   lab: {
     churn: img(`${L}/churn`, 960, 600, '', [480, 960]),
-    dbtClip: clip(`${L}/dbt-metabase-clip`, 960, 600, 'Clipe do painel "Performance de E-commerce" no Metabase (projeto de Mário Schenkel): indicadores de receita, pedidos, ticket médio e cancelamento, gráficos de receita e pedidos por mês, top produtos e receita por categoria, com a tela rolando.', 8),
+    dbtClip: clip(`${L}/dbt-metabase-clip`, 960, 600, 'Clipe do painel "Performance de E-commerce" no Metabase (projeto em parceria com Mário Schenkel): indicadores de receita, pedidos, ticket médio e cancelamento, gráficos de receita e pedidos por mês, top produtos e receita por categoria, com a tela rolando.', 8),
     anatel: img(`${L}/anatel`, 960, 600, '', [480, 960]),
   },
 } as const;

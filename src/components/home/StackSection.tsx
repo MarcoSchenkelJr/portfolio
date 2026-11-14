@@ -9,9 +9,9 @@ const PROJECTS: (CaseSlug | 'site')[] = ['wms-pro', 'wms-saas', 'pdi-studio', 'a
 
 /** 04 · Stack e método: ficha técnica com destaque cruzado (DESIGN.md §4.6, §11.11). */
 export function StackSection() {
-  const [active, setActive] = useState<{ name: string; used: Used } | null>(null);
-  const describe = (name: string, used: Used) =>
-    used === 'all' ? `${name}, ${stackSection.usedIn} ${stackSection.all}` : used.length ? `${name}, ${stackSection.usedIn} ${used.map((u) => stackSection.projectNames[u]).join(', ')}` : `${name}, ${stackSection.studying}`;
+  const [active, setActive] = useState<{ name: string; used: Used; note?: string } | null>(null);
+  const describe = (name: string, used: Used, note?: string) =>
+    used === 'all' ? `${name}, ${stackSection.usedIn} ${stackSection.all}` : used.length ? `${name}, ${stackSection.usedIn} ${used.map((u) => stackSection.projectNames[u]).join(', ')}` : `${name}, ${note ?? stackSection.studying}`;
 
   return (
     <Section id="stack" n={stackSection.n} label={stackSection.label} title={stackSection.title}>
@@ -32,12 +32,12 @@ export function StackSection() {
                           <button
                             type="button"
                             className={`tech-btn${active?.name === it.name ? ' is-on' : ''}`}
-                            aria-label={describe(it.name, it.usedIn)}
-                            onMouseEnter={() => setActive({ name: it.name, used: it.usedIn })}
+                            aria-label={describe(it.name, it.usedIn, it.note)}
+                            onMouseEnter={() => setActive({ name: it.name, used: it.usedIn, note: it.note })}
                             onMouseLeave={() => setActive(null)}
-                            onFocus={() => setActive({ name: it.name, used: it.usedIn })}
+                            onFocus={() => setActive({ name: it.name, used: it.usedIn, note: it.note })}
                             onBlur={() => setActive(null)}
-                            onClick={() => setActive({ name: it.name, used: it.usedIn })}
+                            onClick={() => setActive({ name: it.name, used: it.usedIn, note: it.note })}
                           >
                             {it.name}
                           </button>
@@ -55,7 +55,7 @@ export function StackSection() {
             ) : active.used !== 'all' && active.used.length === 0 ? (
               <>
                 <span>{active.name}:</span>
-                <span className="is-on">{stackSection.studying}</span>
+                <span className="is-on">{active.note ?? stackSection.studying}</span>
               </>
             ) : (
               <>

@@ -1,18 +1,24 @@
 import { useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router';
 import { m, useMotionValueEvent, useReducedMotion, useScroll, useSpring } from 'motion/react';
-import { ArrowUpRight, FileDown } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, FileDown, Mail } from 'lucide-react';
 import { about, contact, links } from '../../content/site';
 import { spring } from '../../motion/tokens';
 import { Section } from '../layout/Section';
 import { Reveal } from '../ui/Reveal';
 import { Stage } from '../ui/Stage';
 import { Picture } from '../media/Picture';
-import { GithubIcon, LinkedinIcon } from '../ui/BrandIcon';
+import { LinkedinIcon } from '../ui/BrandIcon';
 import { asset } from '../../lib/paths';
+import { opener, preloadCase } from '../case/loaders';
 
-function Timeline({ steps }: { steps: { title: string; text: string; current?: boolean }[] }) {
+type Experience = (typeof about.experience)[number];
+
+/** Linha do tempo da carreira: o trilho cresce com a rolagem e cada marco acende (DESIGN.md §7.9). */
+function CareerTimeline({ steps }: { steps: readonly Experience[] }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const location = useLocation();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 78%', 'end 55%'] });
   const fill = useSpring(scrollYProgress, { stiffness: 140, damping: 22, mass: 1 });
   const [lit, setLit] = useState(reduced ? steps.length : 0);
@@ -22,27 +28,49 @@ function Timeline({ steps }: { steps: { title: string; text: string; current?: b
   });
   const shown = reduced ? steps.length : lit;
   return (
-    <div style={{ position: 'relative' }} ref={ref}>
+    <div className="timeline-wrap" ref={ref}>
       <span className="timeline__rail" aria-hidden="true">
         <m.span className="timeline__fill" style={{ scaleY: reduced ? 1 : fill }} />
       </span>
-      <ol className="timeline">
-      {steps.map((s, i) => (
-        <li key={s.title} className={s.current ? 'is-current' : undefined} aria-current={s.current ? 'step' : undefined}>
-          <span className="timeline__dot" aria-hidden="true">
-            <m.i initial={false} animate={{ scale: i < shown ? 1 : 0 }} transition={spring.bouncy} />
-          </span>
-          <h3>{s.title}</h3>
-          <p>{s.text}</p>
-        </li>
-      ))}
+      <ol className="timeline timeline--career">
+        {steps.map((s, i) => (
+          <li key={s.title} className={`${'current' in s && s.current ? 'is-current' : ''} is-${s.weight}`}>
+            <span className="timeline__dot" aria-hidden="true">
+              <m.i initial={false} animate={{ scale: i < shown ? 1 : 0 }} transition={spring.bouncy} />
+            </span>
+            <p className="mono timeline__period">{s.period}</p>
+            <h4>{s.title}</h4>
+            <p className="timeline__org">{s.org}</p>
+            <ul className="timeline__items">
+              {s.items.map((t) => (
+                <li key={t}>{t}</li>
+              ))}
+            </ul>
+            {'link' in s && s.link && (
+              <Link
+                className="timeline__link"
+                to={`/projetos/${s.link.slug}`}
+                state={{ backgroundLocation: location }}
+                onPointerEnter={() => preloadCase(s.link.slug)}
+                onFocus={() => preloadCase(s.link.slug)}
+                onClick={(e) => {
+                  opener.el = e.currentTarget;
+                }}
+              >
+                {s.link.label}
+                <ArrowRight aria-hidden="true" size={16} />
+              </Link>
+            )}
+          </li>
+        ))}
       </ol>
     </div>
   );
 }
 
-/** 01 · Sobre (DESIGN.md §4.3, §11.4). Sem foto: monograma no lugar. */
+/** 01 · Sobre: apresentação, ficha, carreira, formação, certificações e idiomas. Sem foto: monograma. */
 export function About() {
+  const location = useLocation();
   return (
     <Section id="sobre" n={about.n} label={about.label} title={about.title}>
       <div className="about">
@@ -61,32 +89,110 @@ export function About() {
             <figcaption className="mono">{about.figure}</figcaption>
           </figure>
           <div className="about__text">
-            {about.paragraphs.map((p) => (
-              <p key={p.slice(0, 20)}>{p}</p>
+            {about.paragraphs.map((p, i) => (
+              <p key={i} className={i === 0 ? 'about__lead' : undefined}>
+                {p.map((seg, k) => (seg.b ? <strong key={k}>{seg.t}</strong> : <span key={k}>{seg.t}</span>))}
+              </p>
             ))}
+            <p className="about__aside">{about.aside}</p>
             <div className="about__links">
+              <Link
+                className="btn btn--primary btn--sm"
+                to="/projetos/wms-pro"
+                state={{ backgroundLocation: location }}
+                onPointerEnter={() => preloadCase('wms-pro')}
+                onFocus={() => preloadCase('wms-pro')}
+                onClick={(e) => {
+                  opener.el = e.currentTarget;
+                }}
+              >
+                {about.ctas.case}
+                <ArrowRight aria-hidden="true" className="arrow" />
+              </Link>
+              <a className="btn btn--ghost btn--sm" href={links.linkedin} target="_blank" rel="noopener">
+                <LinkedinIcon />
+                {about.ctas.linkedin}
+                <ArrowUpRight aria-hidden="true" />
+              </a>
+              {contact.email && (
+                <a className="btn btn--ghost btn--sm" href={`mailto:${contact.email}`}>
+                  <Mail aria-hidden="true" />
+                  {about.ctas.email}
+                </a>
+              )}
               {contact.resume && (
-                <a className="btn btn--primary btn--sm" href={asset(contact.resume.href)} download>
+                <a className="btn btn--ghost btn--sm" href={asset(contact.resume.href)} download>
                   <FileDown aria-hidden="true" />
                   Baixar currículo
                 </a>
               )}
-              <a className="btn btn--ghost btn--sm" href={links.linkedin} target="_blank" rel="noopener">
-                <LinkedinIcon />
-                LinkedIn
-                <ArrowUpRight aria-hidden="true" />
-              </a>
-              <a className="btn btn--ghost btn--sm" href={links.github} target="_blank" rel="noopener">
-                <GithubIcon />
-                GitHub
-                <ArrowUpRight aria-hidden="true" />
-              </a>
             </div>
           </div>
         </Reveal>
         <Reveal index={1}>
-          <Timeline steps={about.timeline} />
+          <dl className="facts" aria-label="Ficha">
+            {about.facts.map((f) => (
+              <div key={f.label}>
+                <dt className="mono">{f.label}</dt>
+                <dd>
+                  {f.value}
+                  {f.note && <small>{f.note}</small>}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </Reveal>
+      </div>
+
+      <div className="career">
+        <Reveal>
+          <h3 className="career__h">
+            <span className="mono">01.1</span> {about.experienceTitle}
+          </h3>
+          <CareerTimeline steps={about.experience} />
+        </Reveal>
+        <div className="career__side">
+          <Reveal index={1}>
+            <h3 className="career__h">
+              <span className="mono">01.2</span> {about.educationTitle}
+            </h3>
+            <ol className="edu">
+              {about.education.map((e) => (
+                <li key={e.title} className={`${'current' in e && e.current ? 'is-current' : ''}${'discreet' in e && e.discreet ? ' is-discreet' : ''}`}>
+                  <p className="mono timeline__period">{e.period}</p>
+                  <h4>{e.title}</h4>
+                  <p className="timeline__org">{e.org}</p>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+          <Reveal index={2}>
+            <h3 className="career__h">
+              <span className="mono">01.3</span> {about.certsTitle}
+            </h3>
+            <ul className="certs">
+              {about.certifications.map((c) => (
+                <li key={c.title}>
+                  <span className="mono">{c.date}</span>
+                  <b lang={'lang' in c ? c.lang : undefined}>{c.title}</b>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+          <Reveal index={3}>
+            <h3 className="career__h">
+              <span className="mono">01.4</span> {about.languagesTitle}
+            </h3>
+            <ul className="langs">
+              {about.languages.map((l) => (
+                <li key={l.title}>
+                  <b>{l.title}</b>
+                  <span>{l.level}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
       </div>
     </Section>
   );

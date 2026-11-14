@@ -14,10 +14,10 @@ export interface LabItem {
 export const lab = {
   n: '03',
   label: 'Laboratório de dados',
-  title: 'Dados, estudando com Mário Schenkel.',
-  text: 'Estes três projetos são do meu irmão, Mário Schenkel, analista de dados. Estão aqui porque é com eles que eu estudo engenharia e análise de dados: leio o código, rodo na minha máquina e discuto as decisões com ele.',
-  creditTitle: 'Crédito',
-  credit: 'Projetos desenvolvidos por Mário Schenkel, que estudei e acompanhei.',
+  title: 'Projetos desenvolvidos em parceria com Mário Schenkel.',
+  text: 'Três projetos de engenharia e análise de dados feitos em parceria com meu irmão, Mário Schenkel, analista de dados: um modelo de churn com painel, uma stack de dados com dbt e Metabase, e um BI com dados públicos da Anatel.',
+  creditTitle: 'Parceria',
+  credit: 'Projetos desenvolvidos em parceria com Mário Schenkel. Os repositórios ficam no GitHub dele.',
   creditLink: { label: 'Portfólio do Mário', href: 'https://schenkel94.github.io/portfolio/' },
   items: [
     {
@@ -29,7 +29,7 @@ export const lab = {
         { label: 'Painel', href: 'https://churn-7uiy.onrender.com/dashboard/' },
         { label: 'Código', href: 'https://github.com/schenkel94/churn' },
       ],
-      author: 'por Mário Schenkel',
+      author: 'Em parceria com Mário Schenkel',
     },
     {
       title: 'Stack dbt + Metabase',
@@ -37,7 +37,7 @@ export const lab = {
       thumb: media.lab.dbtClip,
       stack: ['dbt', 'DuckDB', 'Metabase'],
       links: [{ label: 'Código', href: 'https://github.com/schenkel94/DBT-Metabase-Stack' }],
-      author: 'por Mário Schenkel',
+      author: 'Em parceria com Mário Schenkel',
     },
     {
       title: 'BI Anatel M2M',
@@ -45,7 +45,7 @@ export const lab = {
       thumb: media.lab.anatel,
       stack: ['Python', 'DuckDB', 'Metabase'],
       links: [{ label: 'Código', href: 'https://github.com/schenkel94/bi-anatel-m2m' }],
-      author: 'por Mário Schenkel',
+      author: 'Em parceria com Mário Schenkel',
     },
   ] as LabItem[],
 };

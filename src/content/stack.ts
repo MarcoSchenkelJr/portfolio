@@ -3,7 +3,7 @@ import type { CaseSlug } from './types';
 
 export interface StackGroup {
   label: string;
-  items: { name: string; usedIn: (CaseSlug | 'site')[] | 'all' }[];
+  items: { name: string; usedIn: (CaseSlug | 'site')[] | 'all'; note?: string }[];
 }
 
 export const stackSection = {
@@ -17,25 +17,30 @@ export const stackSection = {
   projectNames: { 'wms-pro': 'WMS Pro', 'wms-saas': 'WMS SaaS', 'pdi-studio': 'PDI Studio', antigravity: 'Antigravity', site: 'este site' } as Record<CaseSlug | 'site', string>,
   groups: [
     { label: 'Linguagens', items: [
-      { name: 'Python', usedIn: ['pdi-studio'] },
-      { name: 'Java', usedIn: [] },
-      { name: 'SQL', usedIn: ['wms-pro', 'wms-saas'] },
       { name: 'TypeScript', usedIn: ['wms-pro', 'wms-saas', 'pdi-studio'] },
+      { name: 'JavaScript', usedIn: ['antigravity'] },
+      { name: 'Python', usedIn: ['pdi-studio'] },
+      { name: 'SQL', usedIn: ['wms-pro', 'wms-saas'] },
+      { name: 'Java', usedIn: [], note: 'em estudo' },
     ] },
     { label: 'Front-end', items: [
       { name: 'React', usedIn: ['wms-pro', 'wms-saas', 'pdi-studio'] },
+      { name: 'HTML', usedIn: 'all' },
+      { name: 'CSS', usedIn: 'all' },
       { name: 'Tailwind', usedIn: ['wms-pro', 'wms-saas'] },
       { name: 'Vite', usedIn: ['wms-pro', 'wms-saas', 'pdi-studio'] },
     ] },
     { label: 'Back-end', items: [
-      { name: 'FastAPI', usedIn: ['pdi-studio'] },
       { name: 'Node.js', usedIn: ['wms-pro', 'wms-saas'] },
       { name: 'Express', usedIn: ['wms-saas'] },
       { name: 'NestJS', usedIn: ['wms-pro'] },
+      { name: 'FastAPI', usedIn: ['pdi-studio'] },
     ] },
     { label: 'Dados e imagem', items: [
       { name: 'PostgreSQL', usedIn: ['wms-pro', 'wms-saas'] },
       { name: 'Supabase', usedIn: ['wms-pro', 'wms-saas'] },
+      { name: 'Oracle SQL', usedIn: [], note: 'fora dos projetos deste site' },
+      { name: 'JSON', usedIn: ['wms-pro', 'wms-saas', 'pdi-studio'] },
       { name: 'OpenCV', usedIn: ['pdi-studio'] },
       { name: 'NumPy', usedIn: ['pdi-studio'] },
     ] },
@@ -44,10 +49,11 @@ export const stackSection = {
       { name: 'Render', usedIn: ['pdi-studio'] },
       { name: 'GitHub Pages', usedIn: ['antigravity', 'site'] },
     ] },
-    { label: 'Ambiente', items: [
+    { label: 'Ambiente e método', items: [
       { name: 'Linux', usedIn: 'all' },
-      { name: 'terminal', usedIn: 'all' },
-      { name: 'Git', usedIn: 'all' },
+      { name: 'Git e GitHub', usedIn: 'all' },
+      { name: 'Kanban e Scrum', usedIn: [], note: 'organização do trabalho' },
+      { name: 'ERP SAP', usedIn: [], note: 'no dia a dia da operação logística' },
     ] },
   ] as StackGroup[],
   principles: [
