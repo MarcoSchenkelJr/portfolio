@@ -1,14 +1,12 @@
 import { useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router';
 import { m, useMotionValueEvent, useReducedMotion, useScroll, useSpring } from 'motion/react';
-import { ArrowRight, ArrowUpRight, FileDown, Mail } from 'lucide-react';
-import { about, contact, links } from '../../content/site';
+import { ArrowRight, FileDown } from 'lucide-react';
+import { about, contact } from '../../content/site';
 import { spring } from '../../motion/tokens';
 import { Section } from '../layout/Section';
 import { Reveal } from '../ui/Reveal';
-import { Stage } from '../ui/Stage';
 import { Picture } from '../media/Picture';
-import { LinkedinIcon } from '../ui/BrandIcon';
 import { asset } from '../../lib/paths';
 import { opener, preloadCase } from '../case/loaders';
 
@@ -74,20 +72,13 @@ export function About() {
   return (
     <Section id="sobre" n={about.n} label={about.label} title={about.title}>
       <div className="about">
-        <Reveal className="about__intro">
-          <figure className="about__figure">
-            {about.photo ? (
+        <Reveal className={`about__intro${about.photo ? '' : ' about__intro--nophoto'}`}>
+          {about.photo && (
+            <figure className="about__figure">
               <Picture media={about.photo} sizes="180px" className="monogram" />
-            ) : (
-              <Stage padding="none" className="monogram">
-                <span aria-hidden="true">
-                  M<b>S</b>
-                </span>
-                <span className="sr-only-fix">Monograma de Marco Schenkel Jr.</span>
-              </Stage>
-            )}
-            <figcaption className="mono">{about.figure}</figcaption>
-          </figure>
+              <figcaption className="mono">{about.figure}</figcaption>
+            </figure>
+          )}
           <div className="about__text">
             {about.paragraphs.map((p, i) => (
               <p key={i} className={i === 0 ? 'about__lead' : undefined}>
@@ -109,17 +100,6 @@ export function About() {
                 {about.ctas.case}
                 <ArrowRight aria-hidden="true" className="arrow" />
               </Link>
-              <a className="btn btn--ghost btn--sm" href={links.linkedin} target="_blank" rel="noopener">
-                <LinkedinIcon />
-                {about.ctas.linkedin}
-                <ArrowUpRight aria-hidden="true" />
-              </a>
-              {contact.email && (
-                <a className="btn btn--ghost btn--sm" href={`mailto:${contact.email}`}>
-                  <Mail aria-hidden="true" />
-                  {about.ctas.email}
-                </a>
-              )}
               {contact.resume && (
                 <a className="btn btn--ghost btn--sm" href={asset(contact.resume.href)} download>
                   <FileDown aria-hidden="true" />

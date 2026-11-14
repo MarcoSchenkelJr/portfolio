@@ -18,9 +18,9 @@ export const site = {
   name: 'Marco Schenkel Jr.',
   url: 'https://marcoschenkeljr.github.io/portfolio',
   brand: { prefix: '~/', full: 'marco-schenkel-jr', short: 'marco-schenkel' },
-  title: 'Marco Schenkel Jr. · Desenvolvedor full stack',
+  title: 'Marco Schenkel Jr. · Desenvolvedor Full Stack',
   description:
-    'Desenvolvedor full stack e estudante de Ciência da Computação. Criei um sistema de gestão de armazém e automações de processo que rodam em uma operação logística industrial real, e atendo como freelancer desde 2025.',
+    'Marco Schenkel Jr., desenvolvedor full stack e estudante de Ciência da Computação na Feevale. Mais de dez anos em operação logística industrial, criou um WMS e automações de processo que rodam em operação real e atende como freelancer desde 2025.',
   ogImage: 'media/og/home.png',
 };
 
@@ -42,39 +42,37 @@ export const nav = {
 
 export const hero = {
   availability: 'Disponível para estágio e vaga júnior',
-  /** linhas do título; `a: true` = trecho em zarcão */
-  titleLines: [
-    [{ t: 'Software que' }],
-    [{ t: 'aguenta o ' }, { t: 'chão', a: true }],
-    [{ t: 'de fábrica.', a: true }],
-  ] as { t: string; a?: boolean }[][],
-  title: 'Software que aguenta o chão de fábrica.',
-  lead: [
-    { t: 'Sou o ' },
-    { t: 'Marco Schenkel Jr.', b: true },
-    { t: ', desenvolvedor full stack e estudante de Ciência da Computação. Criei o WMS e as automações que hoje rodam na ' },
-    { t: 'operação logística industrial', b: true },
-    { t: ' onde trabalho, e atendo como freelancer desde 2025. O método vem da oficina: ouvir o sintoma, achar a causa, só então trocar a peça.' },
+  /** nome em destaque; `a: true` = trecho em zarcão */
+  nameLines: [[{ t: 'Marco' }], [{ t: 'Schenkel ' }, { t: 'Jr.', a: true }]] as { t: string; a?: boolean }[][],
+  name: 'Marco Schenkel Jr.',
+  role: 'Desenvolvedor Full Stack · Ciência da Computação na Feevale',
+  /** resumo curto; o texto longo fica no Sobre */
+  summary: [
+    { t: 'Depois de mais de dez anos em operação logística industrial, levei o que aprendi para o código. Criei o ' },
+    { t: 'WMS Pro e automações de processo', b: true },
+    { t: ' para a empresa onde trabalho, hoje em operação real, e atendo como freelancer desde 2025.' },
   ],
-  ctaPrimary: 'Ver o case WMS Pro',
-  ctaSecondary: 'Todos os projetos',
+  ctaProjects: 'Ver projetos',
+  ctaLinkedin: 'LinkedIn',
+  ctaGithub: 'GitHub',
+  ctaEmail: 'E-mail',
+  figure: ['fig. 01 · ', 'marco schenkel jr.', ' · ficha'] as [string, string, string],
+  stageLabel: 'Ficha de Marco Schenkel Jr.',
+  /** cotas em volta do monograma */
+  dims: { width: 'full stack', height: 'rs · brasil' },
   whoamiPrompt: 'whoami',
   whoami: 'ciência da computação · feevale | técnico em informática · certificado em mecânica automotiva | full stack freelancer desde 2025',
-  figure: ['fig. 01 · ', 'wms pro', ' · painel + coletor'],
-  frameLabel: 'wms pro · demonstração',
-  stageLabel: 'Telas do WMS Pro: painel no computador e no coletor',
-  pins: [
-    { x: 33, y: 38, title: 'KPIs do turno' },
-    { x: 36, y: 66, title: 'Ocupação por posição' },
-    { x: 74, y: 93, title: 'Mesma tela no coletor', side: 'left' as const },
-  ],
+  /** segunda linha do terminal */
+  statusPrompt: 'cat stack.txt',
+  status: 'typescript · react · node · python · sql · postgresql · linux',
 };
 
+/** Faixa de números sobre o Marco (os números do WMS ficam no destaque do projeto). */
 export const metrics: Metric[] = [
-  { label: 'Em produção', value: '1', detail: 'sistema rodando em operação industrial real' },
-  { label: 'Endereçamento', value: '504', countTo: 504, detail: 'posições de armazém mapeadas no WMS' },
-  { label: 'Ritmo', value: '75', countTo: 75, unit: 'commits', detail: 'em 15 dias, de 22/10 a 05/11/2026' },
-  { label: 'No ar', value: '3', detail: 'projetos com link para testar agora' },
+  { label: 'Operação logística', value: '10+', unit: 'anos', detail: 'bagagem de domínio: ERP SAP, dados, processos e negociação' },
+  { label: 'Freelancer', value: '2025', detail: 'desde então, frontend e backend para pequenas empresas e clientes' },
+  { label: 'No ar', value: '3', detail: 'projetos com link para testar agora, além do WMS em operação' },
+  { label: 'Ciência da Computação', value: '2028', detail: 'previsão de conclusão do bacharelado na Feevale' },
 ];
 
 export const techs = [

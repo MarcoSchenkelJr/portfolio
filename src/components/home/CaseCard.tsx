@@ -1,6 +1,6 @@
 import { useRef, useState, type MouseEvent } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-import { m } from 'motion/react';
+import { m, useInView } from 'motion/react';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import type { CaseMeta } from '../../content/types';
 import { projectsSection } from '../../content/site';
@@ -13,6 +13,8 @@ import { CodeBadge, StatusBadge, Tags } from '../ui/Badge';
 import { LoopVideo } from '../media/LoopVideo';
 import { Picture } from '../media/Picture';
 import { opener, preloadCase } from '../case/loaders';
+import { CountUp } from '../ui/CountUp';
+import { WmsFigure } from './WmsFigure';
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
@@ -34,6 +36,8 @@ export function CaseCard({ data, variant }: { data: CaseMeta; variant: 'featured
   const [hover, setHover] = useState(false);
   const touch = useIsTouch();
   const mediaRef = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const stageInView = useInView(stageRef);
   const open = useOpenCase(data.slug, mediaRef);
   const featured = variant === 'featured';
   const sizes = featured ? '(min-width: 960px) 56vw, 92vw' : '(min-width: 960px) 44vw, 92vw';
@@ -75,18 +79,24 @@ export function CaseCard({ data, variant }: { data: CaseMeta; variant: 'featured
     >
       <Stage
         layoutId={`case-media-${data.slug}`}
-        className="case__media"
+        className={`case__media${data.feature ? ' case__media--figure' : ''}${stageInView ? '' : ' is-paused'}`}
         padding="none"
         figure={data.cardStageTag}
         style={{ borderRadius: 0 }}
       >
-        <m.div ref={mediaRef} layout="position" animate={hover && !touch ? { y: -6, scale: 1.015 } : { y: 0, scale: 1 }} transition={spring.soft} style={{ transformOrigin: '50% 100%' }}>
-          <BrowserFrame label={data.coverFrameLabel}>{mediaEl}</BrowserFrame>
-        </m.div>
-        {featured &&
-          data.cardPins?.map((p, i) => (
-            <Pin key={p.title} n={i + 1} x={p.x} y={p.y} label={p.title} show={hover && !touch} delay={i * 0.07} ringIndex={i} />
-          ))}
+        <div ref={stageRef} className="case__media-inner">
+          <m.div ref={mediaRef} layout="position" animate={hover && !touch ? { y: -6, scale: 1.015 } : { y: 0, scale: 1 }} transition={spring.soft} style={{ transformOrigin: '50% 100%' }}>
+            {data.feature ? (
+              <WmsFigure hover={hover} touch={touch} frameLabel={data.coverFrameLabel} />
+            ) : (
+              <BrowserFrame label={data.coverFrameLabel}>{mediaEl}</BrowserFrame>
+            )}
+          </m.div>
+          {data.feature &&
+            data.cardPins?.map((p, i) => (
+              <Pin key={p.title} n={i + 1} x={p.x} y={p.y} label={p.title} side={p.side} delay={0.3 + i * 0.12} ringIndex={i} />
+            ))}
+        </div>
       </Stage>
       <div className="case__body">
         <div className="case__top">
@@ -96,14 +106,20 @@ export function CaseCard({ data, variant }: { data: CaseMeta; variant: 'featured
           <StatusBadge status={data.status} label={data.statusLabel} />
           <CodeBadge privateCode={data.privateCode} />
         </div>
+        {data.feature && (
+          <>
+            <p className="mono feature__label">{data.feature.label}</p>
+            <p className="feature__claim">{data.feature.claim.map((c, i) => (c.a ? <em key={i}>{c.t}</em> : <span key={i}>{c.t}</span>))}</p>
+          </>
+        )}
         <h3>{data.title}</h3>
         <p className="case__desc">{data.cardText}</p>
         {data.cardMetrics && (
-          <dl className="case__metrics">
+          <dl className={`case__metrics${data.cardMetrics.length === 4 ? ' case__metrics--4' : ''}`}>
             {data.cardMetrics.map((mt) => (
               <div key={mt.label}>
                 <dt>{mt.label}</dt>
-                <dd>{mt.value}</dd>
+                <dd>{mt.countTo ? <CountUp to={mt.countTo} /> : mt.value}</dd>
               </div>
             ))}
           </dl>

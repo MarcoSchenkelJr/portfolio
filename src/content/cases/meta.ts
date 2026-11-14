@@ -33,17 +33,23 @@ export const wmsPro: CaseMeta = {
   cover: media.wms.painel,
   coverClip: media.wms.painelClip,
   coverFrameLabel: 'wms pro · painel · dados fictícios',
-  cardStageTag: ['case 01 · ', 'em produção'],
+  cardStageTag: ['case 01 · ', 'em produção', ' · painel + coletor · dados fictícios'],
   heroFigure: ['fig. 01 · ', 'painel animado', ' · dados fictícios'],
   cardPins: [
-    { x: 44, y: 50, title: 'KPIs do turno', text: '' },
-    { x: 38, y: 88, title: 'Ocupação do armazém', text: '' },
+    { x: 33, y: 38, title: 'KPIs do turno', text: '' },
+    { x: 36, y: 66, title: 'Ocupação por posição', text: '' },
+    { x: 74, y: 93, title: 'Mesma tela no coletor', text: '', side: 'left' },
   ],
   cardMetrics: [
-    { value: '504', label: 'endereços mapeados' },
-    { value: 'v1.2', label: 'em 15 dias de desenvolvimento' },
+    { value: '504', countTo: 504, label: 'posições de armazém mapeadas' },
+    { value: '75', countTo: 75, label: 'commits em 15 dias, de 22/10 a 05/11/2026' },
+    { value: 'v1.2', label: 'versão em operação real' },
     { value: 'Offline', label: 'fila de sincronização' },
   ],
+  feature: {
+    label: 'Meu melhor projeto',
+    claim: [{ t: 'Software que aguenta o ' }, { t: 'chão de fábrica.', a: true }],
+  },
   cardStack: ['React 19', 'TypeScript', 'Tailwind v4', 'Supabase', 'Vercel', 'NestJS'],
   stack: ['React 19', 'Vite 8', 'TypeScript', 'Tailwind v4', 'React Router 7', 'Supabase', 'Vercel', 'NestJS'],
   links: {

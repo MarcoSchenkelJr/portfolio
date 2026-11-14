@@ -89,11 +89,13 @@ export interface CaseMeta {
   coverClip?: VideoSource;
   coverFrameLabel: string;
   /** legenda do palco no cartão: "case 01 · em produção" */
-  cardStageTag: [string, string];
+  cardStageTag: [string, string, string?];
   /** legenda do palco no detalhe */
   heroFigure: [string, string, string?];
   cardPins?: PinData[];
-  cardMetrics?: [Metric, Metric, Metric];
+  cardMetrics?: Metric[];
+  /** projeto em destaque na seção Projetos */
+  feature?: { label: string; claim: { t: string; a?: boolean }[]; frameLabelPhone?: string };
   teaserLine?: string;
   /** etiquetas do cartão */
   cardStack: string[];

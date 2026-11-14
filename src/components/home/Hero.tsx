@@ -1,16 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router';
-import { m, useInView, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
-import { hero } from '../../content/site';
-import { media } from '../../content/media';
+import { m, useInView, useReducedMotion } from 'motion/react';
+import { ArrowDown, Mail } from 'lucide-react';
+import { contact, hero, links, site } from '../../content/site';
 import { ease, spring } from '../../motion/tokens';
-import { useAfterLoad, useIsDesktop } from '../../lib/hooks';
-import { BrowserFrame, DeviceFrame, Stage } from '../ui/Stage';
-import { Pin } from '../ui/Pin';
-import { Picture } from '../media/Picture';
-import { LoopVideo } from '../media/LoopVideo';
-import { opener, preloadCase } from '../case/loaders';
+import { Stage } from '../ui/Stage';
+import { GithubIcon, LinkedinIcon } from '../ui/BrandIcon';
 
 const rise = (delay: number, reduced: boolean | null) =>
   reduced
@@ -21,6 +15,7 @@ const rise = (delay: number, reduced: boolean | null) =>
         transition: { y: { ...spring.soft, delay }, opacity: { duration: 0.6, ease: ease.out, delay } },
       };
 
+/** Texto digitado a 22ms por caractere (DESIGN.md §7.2); completo de uma vez com movimento reduzido. */
 function Typed({ text, delay, reduced }: { text: string; delay: number; reduced: boolean | null }) {
   const [n, setN] = useState(reduced ? text.length : 0);
   useEffect(() => {
@@ -50,35 +45,23 @@ function Typed({ text, delay, reduced }: { text: string; delay: number; reduced:
   );
 }
 
-/** Hero + palco do WMS (DESIGN.md §4.2, §7.2). */
+/** Hero: o Marco primeiro. Nome, papel, resumo, CTAs e a ficha com monograma e terminal. */
 export function Hero() {
   const reduced = useReducedMotion();
-  const desktop = useIsDesktop();
-  const location = useLocation();
-  const heroRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
   const stageInView = useInView(stageRef);
-  const afterLoad = useAfterLoad(1500);
-
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
-  const phoneYRaw = useTransform(scrollYProgress, [0, 1], [0, -40]);
-  const frameYRaw = useTransform(scrollYProgress, [0, 1], [0, 16]);
-  const phoneY = useSpring(phoneYRaw, { stiffness: 140, damping: 22, mass: 1 });
-  const frameY = useSpring(frameYRaw, { stiffness: 140, damping: 22, mass: 1 });
-  const parallax = desktop && !reduced;
-
   const lineDelay = (i: number) => 0.07 + 0.07 * i;
 
   return (
-    <section className="hero" ref={heroRef} aria-labelledby="hero-titulo">
+    <section className="hero hero--person" aria-labelledby="hero-titulo">
       <div className="wrap">
         <div className="hero__grid">
           <div>
             <m.p className="mono eyebrow" {...rise(0, reduced)}>
               {hero.availability}
             </m.p>
-            <h1 id="hero-titulo" aria-label={hero.title}>
-              {hero.titleLines.map((line, i) => (
+            <h1 id="hero-titulo" className="hero__name" aria-label={hero.name}>
+              {hero.nameLines.map((line, i) => (
                 <span className="line" key={i} aria-hidden="true">
                   <m.span
                     initial={reduced ? { opacity: 0 } : { y: '100%' }}
@@ -90,34 +73,31 @@ export function Hero() {
                 </span>
               ))}
             </h1>
+            <m.p className="hero__role" {...rise(0.22, reduced)}>
+              {hero.role}
+            </m.p>
             <m.p className="hero__lead" {...rise(0.28, reduced)}>
-              {hero.lead.map((s, i) => (s.b ? <strong key={i}>{s.t}</strong> : <span key={i}>{s.t}</span>))}
+              {hero.summary.map((s, i) => (s.b ? <strong key={i}>{s.t}</strong> : <span key={i}>{s.t}</span>))}
             </m.p>
             <m.div className="hero__cta" {...rise(0.35, reduced)}>
-              <Link
-                className="btn btn--primary"
-                to="/projetos/wms-pro"
-                state={{ backgroundLocation: location }}
-                onPointerEnter={() => preloadCase('wms-pro')}
-                onFocus={() => preloadCase('wms-pro')}
-                onClick={(e) => {
-                  opener.el = e.currentTarget;
-                }}
-              >
-                {hero.ctaPrimary}
-                <ArrowRight aria-hidden="true" className="arrow" />
-              </Link>
-              <a className="btn btn--ghost" href="#projetos">
-                {hero.ctaSecondary}
+              <a className="btn btn--primary hero__cta-main" href="#projetos">
+                {hero.ctaProjects}
+                <ArrowDown aria-hidden="true" className="arrow arrow--down" />
               </a>
-            </m.div>
-            <m.div className="whoami" {...rise(0.42, reduced)}>
-              <div>
-                <span className="p">$</span> {hero.whoamiPrompt}
-              </div>
-              <div className="o">
-                <Typed text={hero.whoami} delay={0.6} reduced={reduced} />
-              </div>
+              <a className="btn btn--ghost" href={links.linkedin} target="_blank" rel="noopener">
+                <LinkedinIcon size={18} />
+                {hero.ctaLinkedin}
+              </a>
+              <a className="btn btn--ghost" href={links.github} target="_blank" rel="noopener">
+                <GithubIcon size={18} />
+                {hero.ctaGithub}
+              </a>
+              {contact.email && (
+                <a className="btn btn--ghost" href={`mailto:${contact.email}`}>
+                  <Mail aria-hidden="true" />
+                  {hero.ctaEmail}
+                </a>
+              )}
             </m.div>
           </div>
 
@@ -127,30 +107,68 @@ export function Hero() {
             animate={reduced ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
             transition={reduced ? { duration: 0.2 } : { ...spring.soft, delay: 0.14 }}
           >
-            <Stage figure={hero.figure as [string, string, string]} padding="none" className={`hero__stage${stageInView ? '' : ' is-paused'}`} label={hero.stageLabel}>
-              <m.div style={parallax ? { y: frameY } : undefined}>
-                <BrowserFrame label={hero.frameLabel}>
-                  <Picture media={media.wms.painel} sizes="(min-width: 960px) 46vw, 92vw" priority fallbackLabel="wms pro · painel" />
-                </BrowserFrame>
-              </m.div>
-              <m.div
-                className="hero__phone"
-                style={parallax ? { y: phoneY } : undefined}
-                initial={reduced ? { opacity: 0 } : { opacity: 0, y: 40, rotate: 4 }}
-                animate={reduced ? { opacity: 1 } : { opacity: 1, y: 0, rotate: 0 }}
-                transition={reduced ? { duration: 0.2 } : { ...spring.bouncy, delay: 0.5 }}
-              >
-                <DeviceFrame>
-                  {desktop ? (
-                    <LoopVideo video={media.wms.coletorClip} poster={media.wms.painelColetor} posterAlt={media.wms.painelColetor.alt} sizes="12vw" fill deferUntil={afterLoad} fallbackLabel="coletor" />
-                  ) : (
-                    <Picture media={media.wms.painelColetor} sizes="27vw" fill fallbackLabel="coletor" />
-                  )}
-                </DeviceFrame>
-              </m.div>
-              {hero.pins.map((p, i) => (
-                <Pin key={p.title} n={i + 1} x={p.x} y={p.y} label={p.title} side={p.side} delay={0.7 + 0.12 * i} ringIndex={i} />
-              ))}
+            <Stage figure={hero.figure} padding="none" className={`hero__stage hero__id${stageInView ? '' : ' is-paused'}`} label={hero.stageLabel}>
+              <div className="id">
+                <div className="id__drawing">
+                  <m.div
+                    className="id__mono"
+                    initial={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.9, rotate: -2 }}
+                    animate={reduced ? { opacity: 1 } : { opacity: 1, scale: 1, rotate: 0 }}
+                    transition={reduced ? { duration: 0.2 } : { ...spring.bouncy, delay: 0.4 }}
+                  >
+                    <span aria-hidden="true">
+                      M<b>S</b>
+                    </span>
+                    <i className="id__corner id__corner--tl" aria-hidden="true" />
+                    <i className="id__corner id__corner--tr" aria-hidden="true" />
+                    <i className="id__corner id__corner--bl" aria-hidden="true" />
+                    <i className="id__corner id__corner--br" aria-hidden="true" />
+                  </m.div>
+                  <m.span
+                    className="id__dim id__dim--x mono"
+                    aria-hidden="true"
+                    initial={reduced ? false : { clipPath: 'inset(0 100% 0 0)' }}
+                    animate={{ clipPath: 'inset(0 0% 0 0)' }}
+                    transition={{ duration: 0.9, ease: ease.out, delay: 0.7 }}
+                  >
+                    <span>{hero.dims.width}</span>
+                  </m.span>
+                  <m.span
+                    className="id__dim id__dim--y mono"
+                    aria-hidden="true"
+                    initial={reduced ? false : { clipPath: 'inset(0 0 100% 0)' }}
+                    animate={{ clipPath: 'inset(0 0 0% 0)' }}
+                    transition={{ duration: 0.9, ease: ease.out, delay: 0.85 }}
+                  >
+                    <span>{hero.dims.height}</span>
+                  </m.span>
+                </div>
+                <div className="term">
+                  <div className="frame__bar" aria-hidden="true">
+                    <i />
+                    <i />
+                    <i />
+                    <span>
+                      {site.brand.prefix}
+                      {site.brand.full}
+                    </span>
+                  </div>
+                  <div className="term__body">
+                    <p>
+                      <span className="p">$</span> {hero.whoamiPrompt}
+                    </p>
+                    <p className="o">
+                      <Typed text={hero.whoami} delay={0.6} reduced={reduced} />
+                    </p>
+                    <p>
+                      <span className="p">$</span> {hero.statusPrompt}
+                    </p>
+                    <p className="o">
+                      <Typed text={hero.status} delay={0.6 + hero.whoami.length * 0.022 + 0.3} reduced={reduced} />
+                    </p>
+                  </div>
+                </div>
+              </div>
             </Stage>
           </m.div>
         </div>
