@@ -45,7 +45,7 @@ Tudo num arquivo só, `src/content/site.ts`:
 
 Demonstração do WMS com login de convidado: preencha `demo` em `src/content/cases/wms-pro.ts` (`url`, `user`, `password`). Vazio = caixa "Em breve".
 
-## Publicação
+## Publicação:
 
 - `vite.config.ts` usa `base: '/portfolio/'` e o roteador usa `basename="/portfolio"`. Nenhum caminho interno começa com `/` absoluto: mídias, fontes, favicon e imagens OG passam por `import.meta.env.BASE_URL`.
 - O build gera `dist/projetos/<slug>/index.html` (status 200 e metadados próprios por case) e `dist/404.html` (qualquer outro caminho sob `/portfolio/` abre o app, que mostra "Não encontrado").
